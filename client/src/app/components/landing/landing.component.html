@@ -1,0 +1,101 @@
+<app-navbar></app-navbar>
+
+
+<div class='landingPage'>
+    <div class="landing-body">
+
+        <div class="landing-hero" id='home'>
+            <div class="landing-hero-content">
+                <h1>SB Stock Trading</h1>
+                <p>Experience seamless stock market trading with our user-friendly platform, offering real-time data, advanced analytics, and swift execution to empower traders and investors alike. </p>
+
+                <div class="authentication-form">
+
+                    <!-- login -->
+
+                    <form class="authForm" *ngIf="authType === 'login'">
+                        <h2>Login</h2>
+                        <div class="form-floating mb-3 authFormInputs">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" [(ngModel)]="email" />
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3 authFormInputs">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="password" /> 
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" (click)="login()">Sign in</button>
+                
+                        <p>Not registered? <span (click)="changeAuthType('register')">Register</span></p>
+                    </form>
+
+
+                    <!-- Register -->
+
+                    <form class="authForm" *ngIf="authType==='register'">
+                        <h2>Register</h2>
+                        <div class="form-floating mb-3 authFormInputs">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username" [(ngModel)]="username" />
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-3 authFormInputs">
+                            <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="email" [(ngModel)]="email" />
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3 authFormInputs">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="password" /> 
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="usertype" [(ngModel)]="userType" >
+                          <option selected>User type</option>
+                          <option value="admin">Admin</option>
+                          <option value="customer">Customer</option>
+                        </select>
+                
+                        <button class="btn btn-primary" (click)="register()">Sign up</button>
+                        <p>Already registered? <span (click)="changeAuthType('login')">Login</span></p>
+                    </form>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="landing-hero-image">
+                
+                    <img src='../../../assets/home-hero-img.png' alt="" />
+               
+            </div>
+        </div>
+
+        <div class="landing-about" id='about'>
+
+            <div class="about-1">
+                <img src='../../../assets/about1.jpg' alt="" />
+                <div class="about-1-content">
+
+                    <h3>Real-Time Data</h3>
+                    <p>Gain a competitive edge with lightning-fast access to real-time market data, keeping you ahead of every market movement. Stay on top of price fluctuations and trends with up-to-the-minute updates. Make timely and informed decisions with our cutting-edge data delivery. Elevate your trading game with our unparalleled real-time data solutions.</p>
+                    <a href='#home'>Join now!!</a>
+
+                </div>
+            </div>
+            <div class="about-2">
+                <div class="about-2-content">
+                    <h3>Portfolio Management</h3>
+                    <p>Effortlessly manage your investments using our comprehensive portfolio management tools, enabling seamless organization and optimization. Stay informed about your portfolio's performance with advanced tracking capabilities. Mitigate risks effectively with our integrated risk assessment features. Take full control of your financial future with our user-friendly and powerful portfolio management solutions.</p>
+                    <a href='#home'>Join now!!</a>
+                </div>
+                <img src='../../../assets/about2.jpg' alt="" />
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>All rights reserved - &#169; SB-Stocks.com</p>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+
+
+        <div class="navbar" *ngIf="!userType">
+            <h3 >SB Stocks</h3>
+            <div class="nav-options" >
+                <ul>
+                    <li class='header-li'><a href="#home">Home</a></li>
+                    <li class='header-li'><a href="#about">About</a> </li>
+                    <li class='header-li'><a href="#home">Join now</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="navbar" *ngIf="userType === 'customer'">
+            <h3 >SB Stocks</h3>
+            <div class="nav-options" >
+                <p routerLink="/home">Home</p>
+                <p routerLink="/portfolio">Portfolio</p>
+                <p routerLink="/history">History</p>
+                <p routerLink="/profile">Profile</p>
+                <p (click)="logout()">Logout</p>
+            </div>
+        </div>
+
+        <div class="navbar" *ngIf="userType === 'admin'">
+            <h3 >SB Stocks (Admin)</h3>
+            <div class="nav-options" >
+                <p routerLink="/admin">Home</p>
+                <p routerLink="/all-users">Users</p>
+                <p routerLink="/all-orders">Orders</p>
+                <p routerLink="/all-transactions">Transactions</p>
+                <p (click)="logout()">Logout</p>
+            </div> 
+        </div>
+

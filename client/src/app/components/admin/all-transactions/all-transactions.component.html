@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+
+<div class="all-transactions-page">
+    <h2>All Transactions</h2>
+    <div class="all-transactions">
+
+              <div class="admin-transaction" *ngFor="let transaction of transactions">
+                  <span>
+                    <h6>Transaction Id</h6>
+                    <p>{{transaction._id}}</p>
+                  </span>
+                  <span>
+                    <h6>User Id</h6>
+                    <p>{{transaction.user}}</p>
+                  </span>
+                  <span>
+                    <h6>Amount</h6>
+                    <p>$ {{transaction.amount}}</p>
+                  </span>
+                  <span>
+                    <h6>Action</h6>
+                    <p> {{transaction.type}} </p>
+                  </span>
+                  <span>
+                    <h6>Payment mode</h6>
+                    <p>{{transaction.paymentMode}}</p>
+                  </span>
+                  <span>
+                    <h6>Time</h6>
+                    <p>{{transaction.time.slice(0,24)}}</p>
+                  </span>
+              </div>
+
+        
+    </div>
+</div>

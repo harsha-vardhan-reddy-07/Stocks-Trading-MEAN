@@ -1,0 +1,13 @@
+.stockPage{
+    padding-top: 12vh;
+    display: flex;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.stockChart{
+    max-height: 80vh;
+    width: 90%;
+    margin-left: 3vw;
+}
+

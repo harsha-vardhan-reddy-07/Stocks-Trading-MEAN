@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="portfolioPage">
+    <div class="user-portfolio-container">
+
+        <div class="user-portfolio-container-head">
+          <h2>My Portfolio</h2>
+        </div>
+
+        <div class="user-portfolio">
+
+            <div class="user-portfolio-stock" *ngFor="let stock of stocks">
+                <h6>{{stock.stockExchange}}</h6>
+              <span>
+                <h5>Stock name</h5>
+                <p>{{stock.name}}</p>
+              </span>
+              <span>
+                <h5>Symbol</h5>
+                <p>{{stock.symbol}}</p>
+              </span>
+              <span>
+                <h5>Stocks</h5>
+                <p>{{stock.count}}</p>
+              </span>
+              <span>
+                <h5>stock price</h5>
+                <p>$ {{stock.price}}</p>
+              </span>
+              <span>
+                <h5>Total value</h5>
+                <p>$ {{stock.totalPrice}}</p>
+              </span>
+              <button class='btn btn-primary' (click)="OpenStockChart(stock.symbol)">View Chart</button>
+            </div>
+
+        </div>
+        </div>
+
+  </div>

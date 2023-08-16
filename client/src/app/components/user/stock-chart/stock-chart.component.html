@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="stockPage">
+
+  <div id="chart" class="stockChart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </div>
+  
+    <div class="stockChartActions">
+      <div class="stockChartActions-head">
+        <button [ngClass]="stockAction === 'buy' ? 'button-active': 'button-inactive'" (click)="stockAction = 'buy'" >Buy {{stockPrice ? '@ $' + stockPrice : ''}}</button>
+        <button  [ngClass]="stockAction === 'sell' ? 'button-active': 'button-inactive'" (click)="stockAction = 'sell'">Sell {{stockPrice ? '@ $' + stockPrice : ''}}</button>
+      </div>
+
+      <div class="stockChartActions-body">
+
+          <!-- buy -->
+            <form *ngIf="stockAction === 'buy'">
+            <div class="mb-3">
+              <label htmlFor="inputProductType" class="form-label">Product type</label>
+              <select class="form-select" id='inputProductType' aria-label="Default select example" name="stockTradeType" [(ngModel)]="stockTradeType" >
+                <option value="Intraday" selected>Intraday</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label htmlFor="inputStockQuantity" class="form-label" >Quantity</label>
+              <input type="number" class="form-control" id="exampleInputPassword1" name="stockBuyQuantity"  [(ngModel)]="stockBuyQuantity" (ngModelChange)="stockBuyQuantityChange($event)" />
+            </div>
+            <div class="mb-3">
+              <label htmlFor="inputStockTotalPrice" class="form-label">Total price</label>
+              <input type="number" class="form-control" id="inputStockTotalPrice" name="stockBuyPrice" disabled [(ngModel)]="stockBuyPrice" />
+            </div>
+            <button class="btn btn-success" (click)="buyStock()" >Buy now</button>
+        </form>
+    
+        <!-- sell -->
+          <form *ngIf="stockAction === 'sell'">  
+              <div class="mb-3">
+                <label htmlFor="inputProductType" class="form-label">Product type</label>
+                <select class="form-select" id='inputProductType' aria-label="Default select example" name="stockTradeType" [(ngModel)]="stockTradeType">
+                  <option value="Intraday" selected>Intraday</option>
+                  <option value="Delivery">Delivery</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label htmlFor="inputStockQuantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="exampleInputPassword1" name="stockSellQuantity" [(ngModel)]="stockSellQuantity" (ngModelChange)="stockSellQuantityChange($event)" />
+              </div>
+              <div class="mb-3">
+                <label htmlFor="inputStockTotalPrice" class="form-label">Total price</label>
+                <input type="number" class="form-control" id="inputStockTotalPrice" name="stockSellPrice" disabled [(ngModel)]="stockSellPrice" />
+              </div>
+              <button  class="btn btn-danger" (click)="sellStock()">Sell now</button>
+          </form>
+        
+          
+      </div>
+
+    </div>
+  </div>

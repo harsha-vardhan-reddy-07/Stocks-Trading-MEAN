@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+
+<div class="profilePage">
+    <h2>My Account</h2>
+    <div class="profileBox">
+      <div class="profileBox-head">
+          <p>{{username}}</p>
+      </div>
+      <div class="profileBox-body">
+          <span>
+            <p>Trading balance</p>
+            <h6>$ {{userBalance}}</h6>
+          </span>
+          <div class="cash-actions">
+            <button [ngClass]="actionType === 'AddFunds' ? 'cash-actions-active' : 'cash-actions-inactive'" (click)="actionType = 'AddFunds'" >  Add Funds</button>
+            <button [ngClass]="actionType === 'Withdraw' ? 'cash-actions-active' : 'cash-actions-inactive'" (click)="actionType = 'Withdraw'"> Withdraw</button>
+            <button [ngClass]="actionType === 'Transactions' ? 'cash-actions-active' : 'cash-actions-inactive'" (click)="actionType = 'Transactions'"> Transaction History</button>
+          </div>
+      </div> 
+    </div>
+
+
+    <div>
+        <!-- money deposit -->
+      <div class="ProfileFunds" *ngIf="actionType === 'AddFunds'">
+        <h3>Add funds</h3>
+
+        <form>
+          <div class="mb-3">
+            <label htmlFor="amountInput" class="form-label"> Amount</label>
+            <input type="number" class="form-control" id="amountInput" placeholder='Enter amount' name="depositAmount" [(ngModel)]="depositAmount" />
+          </div>
+          <div class="mb-3">
+            <label htmlFor="selectInput" class="form-label"> Payment mode</label>
+            <select class="form-select" id='selectInput' aria-label="Default select example" name="depositType" [(ngModel)]="depositType">
+              <option value="" selected>Choose payment mode</option>
+              <option value="upi">UPI Payment</option>
+              <option value="net banking">Net Banking</option>
+              <option value="card">Credit/Debit Card</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" (click)="deposit()">Proceed</button>
+        </form>
+      </div>
+  
+      <!-- Money withdrawl -->
+
+      <div class="ProfileFunds" *ngIf="actionType === 'Withdraw'">
+        <h3>Withdraw</h3>
+
+        <form>
+          <div class="mb-3">
+            <label htmlFor="amountInput" class="form-label"> Amount</label>
+            <input type="number" class="form-control" id="amountInput" placeholder='Enter amount' name="withdrawAmount" [(ngModel)]="withdrawAmount" />
+          </div>
+          <div class="mb-3">
+            <label htmlFor="selectInput" class="form-label"> Withdraw mode</label>
+            <select class="form-select" id='selectInput' aria-label="Default select example" name="withdrawType" [(ngModel)]="withdrawType">
+              <option value="" selected>Choose withdraw mode</option>
+              <option value="upi">UPI Payment</option>
+              <option value="NEFT">NEFT</option>
+              <option value="IMPS">IMPS</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" (click)="withdraw()">Proceed</button>
+        </form>
+      </div>
+
+      <!-- transactions -->
+      <div class="ProfileFunds" *ngIf="actionType === 'Transactions'">
+        <h3>Transactions</h3>
+
+        <div class="profileTransactions">
+
+
+            <div class="profileTransaction" *ngFor="let transaction of transactions">
+              <span>
+                <h6>Amount</h6>
+                <p>$ {{transaction.amount}}</p>
+              </span>
+              <span>
+                <h6>Action</h6>
+                <p> {{transaction.type}} </p>
+              </span>
+              <span>
+                <h6>Payment mode</h6>
+                <p>{{transaction.paymentMode}}</p>
+              </span>
+              <span>
+                <h6>Time</h6>
+                <p>{{transaction.time.slice(0,24)}}</p>
+              </span>
+            </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+  </div>

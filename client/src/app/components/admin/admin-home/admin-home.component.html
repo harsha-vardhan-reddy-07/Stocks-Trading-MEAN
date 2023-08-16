@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="homePage">
+
+    <div class="trending-stocks-container">
+        <h2>Trending stocks</h2>
+
+        <div class="loading-spinner" *ngIf="trendingStocks.length === 0"> </div>
+
+        <div class="trending-stocks" >
+
+              <div class="trending-stock" *ngFor="let stock of trendingStocks" routerLink="/admin-stock/{{stock.symbol}}">
+                <span>
+                  <h5>Stock name</h5>
+                  <p>{{stock.shortName}}</p>
+                </span>
+                <span>
+                  <h5>Symbol</h5>
+                  <p>{{stock.symbol}}</p>
+                </span>
+                <span>
+                  <h5>Price</h5>
+                  <p >$ {{stock.regularMarketOpen}} ({{stock.regularMarketChangePercent.toFixed(2)}}%)</p>
+                </span>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="all-stocks-container">
+
+        <div class="all-stocks-container-head">
+          <h2>Watchlist</h2>
+          <div class="all-stocks-container-search">
+            <input type="text" placeholder='Enter Stock Symbol....' [(ngModel)]="search" (input)="applyFilter()" />
+          </div>
+        </div>
+
+        <div class="all-stocks">
+
+            <div class="loading-spinner" *ngIf="allStocks.length === 0"> </div>
+
+            <div class="all-stocks-stock" *ngFor="let stock of filteredStocks">
+                <h6>{{stock.exchange}}</h6>
+              <span>
+                <h5>Stock name</h5>
+                <p>{{stock.name}}</p>
+              </span>
+              <span>
+                <h5>Symbol</h5>
+                <p>{{stock.symbol}}</p>
+              </span>
+              <span>
+                <h5>Stock Type</h5>
+                <p>{{stock.type}}</p>
+              </span>
+              <button class='btn btn-primary' routerLink="/stock/{{stock.symbol}}">View Chart</button>
+            </div>
+        
+
+        </div>
+    </div>
+
+  </div>
